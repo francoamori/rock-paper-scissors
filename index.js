@@ -5,6 +5,20 @@ function getComputerChoice() {
     return choices[choice]
 }
 
+function getPlayerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    let choice;
+
+    do {
+        choice = prompt("Make your choice(Rock, paper, scissors)").toLowerCase()
+
+        if (!choices.includes(choice))
+            alert("Invalid option")
+    } while (!choices.includes(choice))
+
+    return choice;
+}
+
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) return "Tie"
 
@@ -17,4 +31,3 @@ function playRound(playerChoice, computerChoice) {
     if (playerChoice === "scissors" && computerChoice === "paper") return "You win! Scissors beats paper"
     if (playerChoice === "scissors" && computerChoice === "rock") return "You lose! Rock beats scissors"
 }
-
