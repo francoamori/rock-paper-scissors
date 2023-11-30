@@ -19,6 +19,15 @@ function getPlayerChoice() {
     return choice;
 }
 
+function getResults(winCounter, loseCounter, tieCounter) {
+    if (winCounter > loseCounter)
+        return "You win!"
+    if (loseCounter > winCounter)
+        return "The computer wins"
+
+    return "It's a tie"
+}
+
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) return "Tie"
 
@@ -31,3 +40,25 @@ function playRound(playerChoice, computerChoice) {
     if (playerChoice === "scissors" && computerChoice === "paper") return "You win! Scissors beats paper"
     if (playerChoice === "scissors" && computerChoice === "rock") return "You lose! Rock beats scissors"
 }
+
+function game() {
+    let tieCounter = winCounter = loseCounter = 0;
+    let result;
+
+    for (let i = 0; i < 5; i++) {
+        result = playRound(getPlayerChoice(), getComputerChoice())
+
+        console.log(result)
+
+        if (result === "Tie") tieCounter++
+
+        else if (result.includes("You win!"))
+            winCounter++
+        else
+            loseCounter++
+    }
+
+    alert(`Player: ${winCounter} | Computer: ${loseCounter} | Ties: ${tieCounter}\n${getResults(winCounter, loseCounter, tieCounter)}`)
+}
+
+game()
